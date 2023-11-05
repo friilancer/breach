@@ -11,6 +11,11 @@ xl (1280px);
     padding: 10px;
 }
 
+.body{
+    max-width: var(--breakpoint-lg);
+    margin: auto;
+}
+
 .btn__back{
     margin: 14px 0;
     padding: 0;

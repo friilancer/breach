@@ -1,18 +1,30 @@
 'use client'
 import Head from 'next/head';
-import styles from './Login.module.css';
+import styles from './Register.module.css';
 import Nav from '../../components/nav'
 import Input from '../../components/input';
 import { useState } from 'react';
 import Link from 'next/link';
+import axios from 'axios'
+import { AppConstants } from '../../lib/constants';
+import { useRouter } from 'next/router';
 
 export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const router = useRouter()
 
-  const handleSubmit = (e) => {
-      e.preventDefault()
-      
+  const handleSubmit = async(e) => {
+      try {
+        e.preventDefault();
+        const { data, status} = await axios.post(`${process.env.NEXT_PUBLIC_BASE_API_URI}${AppConstants.API_ROUTES.REGISTER}`, {
+          email,
+          password
+        })
+        router.push('/onboarding')
+      } catch (e) {
+        alert('Account creation failed')
+      }
   }
   const onChangeEmail = (e) => {
     setEmail(e.target.value)
@@ -63,7 +75,7 @@ export default function Login() {
                 <button className={`btn btn__black btn__wide`} type="submit">Continue</button>
                 <div>
                   <p className={styles.status__text}>
-                    Don't have an account? <Link href="/register">Join Breach</Link>
+                    Already have an account? <Link href="/login">Sign in</Link>
                   </p>
               </div>
               </div>
