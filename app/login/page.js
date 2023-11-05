@@ -5,14 +5,35 @@ import Nav from '../../components/nav'
 import Input from '../../components/input';
 import { useState } from 'react';
 import Link from 'next/link';
+import axios from 'axios'
+import { useContext } from 'react';
+import { AppConstants } from '../../lib/constants';
+import {useRouter} from 'next/navigation';
+import { User } from '../../contexts';
 
 export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter()
+  const { saveSessionUser } = useContext(User)
 
-  const handleSubmit = (e) => {
-      e.preventDefault()
-      
+  const handleSubmit = async(e) => {
+      e.preventDefault();
+      if(isLoading) return
+      try {
+        setIsLoading(true)
+        const { data, status } = await axios.post(`${process.env.NEXT_PUBLIC_BASE_API_URI}${AppConstants.API_ROUTES.LOGIN}`, {
+          email,
+          password
+        })
+        saveSessionUser(data)
+        router.push('/welcome')
+      } catch (e) {
+        alert('Account creation failed')
+      } finally{
+        setIsLoading(false)
+      }
   }
   const onChangeEmail = (e) => {
     setEmail(e.target.value)
@@ -51,7 +72,7 @@ export default function Login() {
                     value={email}
                     onChange={onChangeEmail}
                   />
-                <Input 
+                  <Input 
                     type="password"
                     id="password"
                     required={true}

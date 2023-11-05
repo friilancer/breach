@@ -3,27 +3,35 @@ import Head from 'next/head';
 import styles from './Register.module.css';
 import Nav from '../../components/nav'
 import Input from '../../components/input';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Link from 'next/link';
 import axios from 'axios'
 import { AppConstants } from '../../lib/constants';
-import { useRouter } from 'next/router';
+import {useRouter} from 'next/navigation';
+import { User } from '../../contexts';
 
-export default function Login() {
+export default function Register() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
+  const { saveSessionUser } = useContext(User)
 
   const handleSubmit = async(e) => {
+      e.preventDefault();
+      if(isLoading) return
       try {
-        e.preventDefault();
+        setIsLoading(true)
         const { data, status} = await axios.post(`${process.env.NEXT_PUBLIC_BASE_API_URI}${AppConstants.API_ROUTES.REGISTER}`, {
           email,
           password
         })
-        router.push('/onboarding')
+        saveSessionUser(data)
+        router.push('/welcome')
       } catch (e) {
         alert('Account creation failed')
+      } finally{
+        setIsLoading(false)
       }
   }
   const onChangeEmail = (e) => {
@@ -35,7 +43,7 @@ export default function Login() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Login</title>
+        <title>Register</title>
         <link rel="icon" href="icons/logo.svg" />
       </Head>
       <main>
@@ -75,7 +83,7 @@ export default function Login() {
                 <button className={`btn btn__black btn__wide`} type="submit">Continue</button>
                 <div>
                   <p className={styles.status__text}>
-                    Already have an account? <Link href="/login">Sign in</Link>
+                    Already have an account? <Link href="/Register">Sign in</Link>
                   </p>
               </div>
               </div>

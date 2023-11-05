@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Nav from '../../components/nav';
 import styles from './Welcome.module.css';
 
-export default function Login() {
+export default function Welcome() {
   return (
     <div className={styles.container}>
       <Head>
@@ -24,7 +24,7 @@ export default function Login() {
             <p>
               Just a few quick questions to help personalise your Breach experience. Are you ready?
             </p>
-            <button className={`btn btn__black`}>Let's begin!</button>
+            <button  className={`btn btn__black`}>Let's begin!</button>
           </div>
         </div>
       </main>

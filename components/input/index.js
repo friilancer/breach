@@ -7,8 +7,8 @@ const Input = ({
     placeholder = '',
     label = '',
     value = '',
-    onChange = () => {}
-
+    onChange = () => {},
+    autoComplete = ''
 }) => {
     return (
         (
@@ -27,6 +27,7 @@ const Input = ({
                     placeholder={placeholder} 
                     value={value} 
                     onChange={onChange} 
+                    autoComplete={autoComplete}
                 />
             </div>
         )
