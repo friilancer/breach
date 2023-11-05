@@ -48,37 +48,12 @@ xl (1280px);
     margin: 2.5rem auto 20vh;
 }
 
-.form__group{
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    width: 100%;
-}
-
-.form__group__label{
-    font-size: 0.8rem;
-    color: var(--gray-900);
-    text-align: left;
-}
-
-.form__group__input{
-    padding: 12px;
-    border-radius: 8px;
-    font-weight: 400;
-    text-align: left;
-    border: 1px solid var(--gray-200);
-}
-
-.form__group__input:focus{
-    outline: none;
-}
-
-.account_status__text{
+.status__text{
     font-size: 0.9rem;
     color: var(--gray-900);
 }
 
-.account_status__text a{
+.status__text a{
     text-decoration: underline;
 }
 

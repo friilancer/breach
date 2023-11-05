@@ -1,0 +1,24 @@
+.input{
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 400;
+    text-align: left;
+    border: 1px solid var(--gray-200);
+}
+
+.input:focus{
+    outline: none;
+}
+
+.form__group{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.label{
+    font-size: 0.8rem;
+    color: var(--gray-900);
+    text-align: left;
+}

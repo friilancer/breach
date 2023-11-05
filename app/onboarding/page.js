@@ -1,3 +1,4 @@
+'use client'
 import Head from 'next/head';
 import styles from '../../styles/Onboarding.module.css';
 import Nav from '../../components/nav'

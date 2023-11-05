@@ -1,8 +1,24 @@
+'use client'
 import Head from 'next/head';
 import styles from '../../styles/Login.module.css';
 import Nav from '../../components/nav'
+import Input from '../../components/input';
+import { useState } from 'react';
 
 export default function Login() {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const handleSubmit = (e) => {
+      e.preventDefault()
+      
+  }
+  const onChangeEmail = (e) => {
+    setEmail(e.target.value)
+  }
+  const onChangePassword = (e) => {
+    setPassword(e.target.value)
+  }
   return (
     <div className={styles.container}>
       <Head>
@@ -24,17 +40,27 @@ export default function Login() {
               Break through the noise and discover content that matters to you in under 3 minutes.
             </h6>
             <div className={styles.form__main}>
-              <div className={styles.form__group}>
-                <label className={styles.form__group__label} htmlFor="email">Email</label>
-                <input className={styles.form__group__input}  type="email" id="email" required />
-              </div>
-              <div className={styles.form__group}>
-                <label className={styles.form__group__label} htmlFor="password">Password</label>
-                <input  className={styles.form__group__input} type="password" id="password" required/>
-              </div>
+                <Input 
+                  type="email"
+                  id="email"
+                  required={true}
+                  placeholder="Enter email"
+                  label="Email"
+                  value={email}
+                  onChange={onChangeEmail}
+                />
+              <Input 
+                  type="password"
+                  id="password"
+                  required={true}
+                  placeholder="Enter password"
+                  label="Password"
+                  value={password}
+                  onChange={onChangePassword}
+                />
               <button className={`btn btn__primary btn__wide`} type="submit">Continue</button>
-              <div className={styles.form__group__account_status}>
-                <p className={styles.account_status__text}>
+              <div>
+                <p className={styles.status__text}>
                   Already have an account? <a href="#">Log in</a>
                 </p>
             </div>
