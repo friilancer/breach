@@ -53,7 +53,7 @@ export default function Register() {
         </section>
         <section className={styles.body}>
           <div className={`btn ${styles.btn__back}`}>
-            <img src="/icons/back.svg" alt="logo" />
+            <img src="https://res.cloudinary.com/friilancer/image/upload/v1699294372/breach/elwcgwodzr7h2pt9s8xh.svg" alt="logo" />
             Back
           </div>
           <form onSubmit={handleSubmit}>
@@ -84,7 +84,7 @@ export default function Register() {
                 <button className={`btn btn__black btn__wide`} type="submit">Continue</button>
                 <div>
                   <p className={styles.status__text}>
-                    Already have an account? <Link href="/Register">Sign in</Link>
+                    Already have an account? <Link href="/login">Sign in</Link>
                   </p>
               </div>
               </div>

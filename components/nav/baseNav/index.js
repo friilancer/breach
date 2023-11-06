@@ -6,7 +6,7 @@ const Nav = ({
 }) => {
     return (
         <nav className={styles.nav__container}>
-            <img src="/icons/logo.svg" alt="logo" />
+            <img src="https://res.cloudinary.com/friilancer/image/upload/v1699294373/breach/wsvk8hqpjqmz3xfiej02.svg" alt="logo" />
             {
                 showActions ? (
                     <div className={styles.nav__secondary}>

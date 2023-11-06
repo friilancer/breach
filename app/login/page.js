@@ -55,7 +55,7 @@ export default function Login() {
         </section>
         <section className={styles.body}>
           <div className={`btn ${styles.btn__back}`}>
-            <img src="/icons/back.svg" alt="logo" />
+            <img src="https://res.cloudinary.com/friilancer/image/upload/v1699294372/breach/elwcgwodzr7h2pt9s8xh.svg" alt="logo" />
             Back
           </div>
           <form onSubmit={handleSubmit}>

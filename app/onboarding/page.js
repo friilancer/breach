@@ -49,12 +49,12 @@ export default function Onboarding() {
           <Nav />
         </section>
         <div onClick={router.back} className={`btn ${styles.btn__back}`}>
-          <img src="/icons/back.svg" alt="logo" />
+          <img src="https://res.cloudinary.com/friilancer/image/upload/v1699294372/breach/elwcgwodzr7h2pt9s8xh.svg" alt="logo" />
           Back
         </div>
         <div>
           <div className={styles.container}>
-            <img className={styles.header__image} src='/images/onboarding_hero.png' alt='Hero image' />
+            <img className={styles.header__image} src="https://res.cloudinary.com/friilancer/image/upload/v1699294247/breach/a1vgpfibxp8hxhsbanja.png" alt='Hero image' />
             <h1 className={styles.header__main}>What are your interests?</h1>
             <h6 className={styles.header__secondary}>
               Select your interests and I'll recommend some series I'm certain you'll enjoy!
