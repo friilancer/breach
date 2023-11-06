@@ -22,3 +22,11 @@
     color: var(--gray-900);
     text-align: left;
 }
+
+.error{
+    color: #a10303;
+}
+
+.input__error{
+    border-color: #a10303;;   
+}

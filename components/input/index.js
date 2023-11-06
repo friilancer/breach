@@ -8,18 +8,22 @@ const Input = ({
     label = '',
     value = '',
     onChange = () => {},
-    autoComplete = ''
+    autoComplete = '',
+    errorState = true,
+    errorMessage = 'Big error'
 }) => {
     return (
         (
             <div className={styles.form__group}>
                 {
                     label ? (
-                        <label className={styles.label} htmlFor={id}>{label}</label>
+                        <label className={styles.label} htmlFor={id}>
+                            {label}{errorState ? <>: <span className={styles.error}>{errorMessage}</span></> : null}  
+                        </label>
                     ) : null
                 }
                 <input 
-                    className={styles.input} 
+                    className={`${styles.input} ${errorState ? styles.input__error : ''}`} 
                     type={type} 
                     id={id} 
                     name={id}

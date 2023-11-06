@@ -13,14 +13,18 @@ import { App } from '../../contexts';
 
 export default function Login() {
   const [email, setEmail] = useState('')
+  const [emailError, setEmailError] = useState(false)
+  const [emailErrorMessage, setEmailErrorMessage] = useState('')
   const [password, setPassword] = useState('')
+  const [passwordError, setPasswordError] = useState(false)
+  const [passwordErrorMessage, setPasswordErrorMessage] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
   const { saveSessionUser } = useContext(App)
 
   const handleSubmit = async(e) => {
       e.preventDefault();
-      if(isLoading) return
+      if(isLoading || emailError || passwordError || !email || !password) return
       try {
         setIsLoading(true)
         const { data } = await axios.post(`${process.env.NEXT_PUBLIC_BASE_API_URI}${AppConstants.API_ROUTES.LOGIN}`, {
@@ -40,9 +44,23 @@ export default function Login() {
   }
   const onChangeEmail = (e) => {
     setEmail(e.target.value)
+    if(e.target.value.length > 0 && !AppConstants.VALIDATION_REGEX.EMAIL.test(e.target.value.trim())) {
+      setEmailError(true)
+      setEmailErrorMessage('Invalid email address. Should be of the format: xyz@xyz.com')
+    }else {
+      setEmailError(false)
+      setEmailErrorMessage('')
+    }
   }
   const onChangePassword = (e) => {
     setPassword(e.target.value)
+    if(e.target.value.length > 0 && !AppConstants.VALIDATION_REGEX.PASSWORD_REGEX.test(e.target.value.trim())) {
+      setPasswordError(true)
+      setPasswordErrorMessage('Password should be atleast 6 characters long')
+    }else {
+      setPasswordError(false)
+      setPasswordErrorMessage('')
+    }
   }
 
   
@@ -76,6 +94,8 @@ export default function Login() {
                     label="Email"
                     value={email}
                     onChange={onChangeEmail}
+                    errorState={emailError}
+                    errorMessage={emailErrorMessage}
                   />
                   <Input 
                     type="password"
@@ -85,8 +105,10 @@ export default function Login() {
                     label="Password"
                     value={password}
                     onChange={onChangePassword}
+                    errorState={passwordError}
+                    errorMessage={passwordErrorMessage}
                   />
-                <button className={`btn btn__black btn__wide`} type="submit">Continue</button>
+                <button className={`btn btn__wide ${!emailError && !passwordError && email && password ? 'btn__black' : 'btn__error'}`} type="submit">Continue</button>
                 <div>
                   <p className={styles.status__text}>
                     Don't have an account? <Link href="/register">Join Breach</Link>
