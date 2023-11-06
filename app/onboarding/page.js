@@ -60,7 +60,7 @@ export default function Onboarding() {
               Select your interests and I'll recommend some series I'm certain you'll enjoy!
             </h6>
             <div className={styles.onboarding__main}>
-              <Categories value={selectedInterests} onChange={handleChange} />
+              <Categories value={selectedInterests} onChange={handleChange} alignCenter={true}/>
               <div className={styles.onboarding__actions}>
                 <button onClick={handleNext}  className={`btn btn__black`}>Next</button>
                 <Link href={'/home'} className={''}>Skip for later</Link>

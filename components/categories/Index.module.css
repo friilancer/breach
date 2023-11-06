@@ -9,9 +9,15 @@
     margin: auto;
 }
 
+.container__center{
+    justify-content: center;
+}
+
 @media screen and (min-width : 1024px){
     .container{
         justify-content: start;
+    } 
+    .container__center{
+        justify-content: center;
     }
-    
 }

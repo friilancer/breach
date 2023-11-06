@@ -4,7 +4,8 @@ import styles from './Index.module.css'
 
 export default function Categories({
     value = [],
-    onChange = () => {}
+    onChange = () => {},
+    alignCenter = false
 }){
     const { allInterests } = useContext(App)
     const [selectedInterests, setSelectedInterests] = useState(value)
@@ -21,7 +22,7 @@ export default function Categories({
         }
     }
     return (
-        <div className={styles.container}>
+        <div className={`${styles.container} ${alignCenter ? styles.container__center : ''}`} >
             {
                 allInterests.map(({id, name, icon}) => {
                     return (
