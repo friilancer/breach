@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import styles from './Index.module.css'
 
 const Nav = ({
@@ -9,8 +10,8 @@ const Nav = ({
             {
                 showActions ? (
                     <div className={styles.nav__secondary}>
-                        <button className={`btn btn__primary`}>Log in</button>
-                        <button className={`btn btn__secondary`}>Join Breach</button>
+                        <Link className={`btn btn__primary`} href={'/login'}>Log in</Link>
+                        <Link className={`btn btn__secondary`} href={'/register'}>Join Breach</Link>
                     </div>
                 ) : null
             }

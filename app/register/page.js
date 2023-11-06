@@ -1,7 +1,7 @@
 'use client'
 import Head from 'next/head';
 import styles from './Register.module.css';
-import Nav from '../../components/nav'
+import Nav from '../../components/nav/baseNav'
 import Input from '../../components/input';
 import { useContext, useState } from 'react';
 import Link from 'next/link';

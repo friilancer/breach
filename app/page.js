@@ -1,9 +1,40 @@
 'use client'
 import Head from 'next/head';
-import styles from '.Index.module.css';
-import Nav from '../components/nav'
+import styles from './Index.module.css';
+import Nav from '../components/nav/baseNav'
+import PostsNav from '../components/nav/postsNav';
+import PostCard from '../components/card/postCard';
+import Categories from '../components/categories';
+import Link from 'next/link';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import { AppConstants } from '../lib/constants';
 
 export default function Home() {
+
+  const [selectedInterests, setSelectedInterests] = useState([])
+  const handleChange = (interests) => {
+    setSelectedInterests(interests)
+  }
+
+  const [allPosts, setAllPosts] = useState([])
+
+  useEffect(() => {
+    const getAllPosts = async() => {
+      try {
+        const {data} = await axios.get(`${process.env.NEXT_PUBLIC_BASE_API_URI}${AppConstants.API_ROUTES.POSTS}`)
+        console.log(data)
+        setAllPosts(data)
+
+      } catch (e) {
+        console.log(e)
+        alert('Failed to fetch posts')
+      }
+    }
+    getAllPosts()
+  }, [])
+
+
   return (
     <div className={styles.container}>
       <Head>
@@ -22,7 +53,7 @@ export default function Home() {
                 <p>
                     Subscribe to your favourite creators and thinkers. <br/> Support work that matters
                 </p>
-                <a href='#' className={`btn btn__primary`}>Join Breach</a>
+                <Link href={'/register'} className={`btn btn__primary`}>Join Breach</Link>
               </div>
               <div className={styles.hero__image}>
                 <img src="images/hero_image.png" alt="hero" />
@@ -40,90 +71,29 @@ export default function Home() {
                 <h2>Categories</h2>
                 <p>Discover content from topics you care about</p>
               </div>
-              <div className={styles.categories__body}>
-                <button className={`btn btn__neutral`}>🤣 Humor</button>
-                <button className={`btn btn__neutral`}>🤣 Sport</button>
-                <button className={`btn btn__neutral`}>🤣 Crypto</button>
-                <button className={`btn btn__neutral`}>🤣 LifeHack</button>
-                <button className={`btn btn__neutral`}>🤣 Humor</button>
-                <button className={`btn btn__neutral`}>🤣 Sport</button>
-                <button className={`btn btn__neutral`}>🤣 Crypto</button>
-                <button className={`btn btn__neutral`}>🤣 LifeHack</button>
-                <button className={`btn btn__neutral`}>🤣 Humor</button>
-                <button className={`btn btn__neutral`}>🤣 Sport</button>
-                <button className={`btn btn__neutral`}>🤣 Crypto</button>
-                <button className={`btn btn__neutral`}>🤣 LifeHack</button>
-              </div>
+              <Categories value={selectedInterests} onChange={handleChange} />
             </div>
           </section>
           <section>
             <div className={styles.posts__container}>
-              <nav className={styles.posts__nav}>
-                <div className={styles.nav__item}>Featured</div>
-                <div className={styles.nav__item}>Popular</div>
-                <div className={styles.nav__item}>Recent</div>
-              </nav>
+              <PostsNav />      
               <div className={styles.posts__body}>
-                <div className={styles.post__card}>
-                  <div className={styles.post__card_header}>
-                    <img src='/images/workinprogress.png' className={styles.post__card_header_image} />
-                  </div>
-                  <div className={styles.post__card_body}>
-                    <p className={styles.post__series}>WORK IN PROGRESS</p>
-                    <h4 className={styles.post__title}>On migration and maintaining friendships</h4>
-                    <p className={styles.post__content}>I went to boarding school and left pretty early, so I had some experience with losing friends to relocation long before the</p>
-                    <div className={styles.post__content_secondary} >
-                      <p className={styles.post__author}>LOTA</p>
-                      <p>•</p>
-                      <p className={styles.post__date}>12 DEC 2022</p>
-                    </div>
-                  </div>
-                </div>
-                <div className={styles.post__card}>
-                  <div className={styles.post__card_header}>
-                    <img src='/images/workinprogress.png' className={styles.post__card_header_image} />
-                  </div>
-                  <div className={styles.post__card_body}>
-                    <p className={styles.post__series}>WORK IN PROGRESS</p>
-                    <h4 className={styles.post__title}>On migration and maintaining friendships</h4>
-                    <p className={styles.post__content}>I went to boarding school and left pretty early, so I had some experience with losing friends to relocation long before the</p>
-                    <div className={styles.post__content_secondary} >
-                      <p className={styles.post__author}>LOTA</p>
-                      <p>•</p>
-                      <p className={styles.post__date}>12 DEC 2022</p>
-                    </div>
-                  </div>
-                </div>
-                <div className={styles.post__card}>
-                  <div className={styles.post__card_header}>
-                    <img src='/images/workinprogress.png' className={styles.post__card_header_image} />
-                  </div>
-                  <div className={styles.post__card_body}>
-                    <p className={styles.post__series}>WORK IN PROGRESS</p>
-                    <h4 className={styles.post__title}>On migration and maintaining friendships</h4>
-                    <p className={styles.post__content}>I went to boarding school and left pretty early, so I had some experience with losing friends to relocation long before the</p>
-                    <div className={styles.post__content_secondary} >
-                      <p className={styles.post__author}>LOTA</p>
-                      <p>•</p>
-                      <p className={styles.post__date}>12 DEC 2022</p>
-                    </div>
-                  </div>
-                </div>
-                <div className={styles.post__card}>
-                  <div className={styles.post__card_header}>
-                    <img src='/images/workinprogress.png' className={styles.post__card_header_image} />
-                  </div>
-                  <div className={styles.post__card_body}>
-                    <p className={styles.post__series}>WORK IN PROGRESS</p>
-                    <h4 className={styles.post__title}>On migration and maintaining friendships</h4>
-                    <p className={styles.post__content}>I went to boarding school and left pretty early, so I had some experience with losing friends to relocation long before the</p>
-                    <div className={styles.post__content_secondary} >
-                      <p className={styles.post__author}>LOTA</p>
-                      <p>•</p>
-                      <p className={styles.post__date}>12 DEC 2022</p>
-                    </div>
-                  </div>
-                </div>
+                {
+                  allPosts.filter(post => selectedInterests.length === 0 ? true : selectedInterests.includes(post.category.id)).map((post) => {
+                    return (
+                      <PostCard 
+                        key={post.id} 
+                        post={post} 
+                        imageUrl={post.imageUrl}
+                        title={post.title}
+                        series = {post.series}
+                        content = {post.content}
+                        author = {post.author}
+                        createdAt = {post.createdAt}
+                      />
+                    )
+                  })
+                }
               </div>
             </div>
           </section>

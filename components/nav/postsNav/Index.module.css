@@ -1,0 +1,16 @@
+.posts__nav{
+    border-bottom: 1.5px solid var(--gray-50);
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.nav__item{
+    padding: 8px;
+    position: relative;
+    top: 1.5px;
+}
+
+.nav__item_active{
+    border-bottom: 1.5px solid var(--black);
+}

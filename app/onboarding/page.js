@@ -1,7 +1,7 @@
 'use client'
 import Head from 'next/head';
 import styles from './Onboarding.module.css';
-import Nav from '../../components/nav'
+import Nav from '../../components/nav/baseNav'
 import { useRouter } from 'next/navigation';
 import Categories from '../../components/categories';
 import Link from 'next/link';
@@ -37,6 +37,7 @@ export default function Onboarding() {
       alert('Failed to save')
     }
   }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -71,4 +72,5 @@ export default function Onboarding() {
       </main>
     </div>
   );
+
 }
