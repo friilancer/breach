@@ -2,10 +2,11 @@
 'use client'
 import '../styles/global.css';
 import { App } from '../contexts'
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { AppConstants } from '../lib/constants';
 import axios from 'axios';
 import io from 'socket.io-client'
+import { NavigationEvent } from '../events';
  
 export default function RootLayout({ children }) {
   const [sessionUser, setSessionUser] = useState({
@@ -59,7 +60,7 @@ export default function RootLayout({ children }) {
   }
 
   useEffect(() => {
-    connectSocket()
+    //connectSocket()
     getAllInterests()
   }, [])
 
@@ -78,6 +79,7 @@ export default function RootLayout({ children }) {
 
   }, [socket])
 
+
   useEffect(() => {}, [sessionUser.id])
   
   return (
@@ -90,6 +92,10 @@ export default function RootLayout({ children }) {
       <html lang='en'>
         <body>
           {children}
+
+          <Suspense fallback={null}>
+            <NavigationEvent />
+          </Suspense>
         </body>
       </html>
     </App.Provider>
