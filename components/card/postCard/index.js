@@ -13,8 +13,22 @@ const PostCard = ({
         id: '',
     },
     createdAt = '',
-    id = ''
 }) => {
+    const date = new Date(createdAt)
+    let months = [
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'June',
+        'July',
+        'Aug',
+        'Sept',
+        'Oct',
+        'Nov',
+        'Dec'
+    ]
     return (
         <div className={styles.post__card}>
             <div className={styles.card__header}>
@@ -27,7 +41,7 @@ const PostCard = ({
                 <div className={styles.post__content_secondary} >
                     <p className={styles.post__author}>{author.name}</p>
                     <p>•</p>
-                    <p className={styles.post__date}>{createdAt}</p>
+                    <p className={styles.post__date}>{`${date.getDate()} ${months[date.getMonth() + 1]} ${date.getFullYear()}`}</p>
                 </div>
             </div>
         </div>

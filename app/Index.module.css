@@ -85,7 +85,7 @@ xl (1280px);
 .posts__body{
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 2rem;
 }
 
 @media screen and (min-width : 500px) {
@@ -108,10 +108,30 @@ xl (1280px);
 
 @media screen and (min-width : 1024px){
     .container__body{
+        display: grid;
         flex-direction: row-reverse;
         gap: 5%;
         padding-top: 3rem;
+        width: 100vw;
+        justify-content: space-between;
+        grid-template-columns: 1fr auto;
     }  
+
+    .posts__container{
+        width: 100%;
+    }
+
+    .posts__section{
+        width: 100%;
+        grid-column-start: 1;
+        grid-row-start: 1;
+    }
+
+    .categories__container{
+        margin-bottom: 0;
+        width: 35vw;
+        max-width: 450px;
+    }
 
     .categories__body{
         justify-content: start;
@@ -123,11 +143,6 @@ xl (1280px);
 }
 
 @media screen and (min-width : 1280px){
-    .container__body{
-        flex-direction: row-reverse;
-        gap: 5%;
-        padding-top: 3rem;
-    }  
     
     .container__head, .container__body{
         padding: 18px;

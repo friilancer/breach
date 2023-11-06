@@ -2,6 +2,7 @@
     border-bottom: 1.5px solid var(--gray-50);
     display: flex;
     gap: 16px;
+    width: 100%;
     margin-bottom: 20px;
 }
 
@@ -9,8 +10,10 @@
     padding: 8px;
     position: relative;
     top: 1.5px;
+    color: var(--gray-600);
 }
 
 .nav__item_active{
     border-bottom: 1.5px solid var(--black);
+    color: var(--black);
 }

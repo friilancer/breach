@@ -23,11 +23,8 @@ export default function Home() {
     const getAllPosts = async() => {
       try {
         const {data} = await axios.get(`${process.env.NEXT_PUBLIC_BASE_API_URI}${AppConstants.API_ROUTES.POSTS}`)
-        console.log(data)
         setAllPosts(data)
-
       } catch (e) {
-        console.log(e)
         alert('Failed to fetch posts')
       }
     }
@@ -62,10 +59,7 @@ export default function Home() {
           </section>
         </div>
         <div className={styles.container__body}>
-          <section>
-            <div className={styles.posts__container}></div>
-          </section>
-          <section>
+          <section className={styles.categories__section}>
             <div className={styles.categories__container}>
               <div className={styles.categories__header}>
                 <h2>Categories</h2>
@@ -74,7 +68,7 @@ export default function Home() {
               <Categories value={selectedInterests} onChange={handleChange} />
             </div>
           </section>
-          <section>
+          <section className={styles.posts__section} >
             <div className={styles.posts__container}>
               <PostsNav />      
               <div className={styles.posts__body}>
@@ -99,7 +93,6 @@ export default function Home() {
           </section>
         </div>
       </main>
-      <footer></footer>
     </div>
   );
 }

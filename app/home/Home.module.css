@@ -2,15 +2,28 @@
     display: grid;
     max-width: var(--breakpoint-2xl);
     margin: auto;
+    padding: 16px;
+}
+
+.nav__container{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.nav__container .nav__header{
+    display: flex;
+    margin-bottom: 2rem;
+    max-width: 150px;
 }
 
 .page__container{
-
+    display: grid;
 }
 
 .streams__container{
     width: 100%;
-    display: none;
+    margin-top: 1.5rem;
 }
 
 .streams__head{
@@ -22,11 +35,50 @@
     margin-bottom: 1rem;
 }
 
-.bestpick__container{
+.streams__head h3{
+    font-size: 1.6rem;
+}
+
+.streams__head p{
+    color: var(--gray-600);
+}
+
+.hero__container{
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    margin-bottom: 1.5rem;
 }
+
+.hero__main, .hero__secondary{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.hero__main .main__header{
+    font-size: 1.6rem;
+}
+
+.hero__secondary .main__header{
+   font-size: 1.3rem;
+}
+
+.hero__secondary .main__header, .hero__main .main__header{
+    color: var(--gray-900);
+}
+
+
+.hero__secondary .main__body, .hero__main .main__body{
+    color: var(--gray-600);
+}
+
+.posts__body{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
 
 .streams__body{
     display: flex;
@@ -65,6 +117,7 @@
     margin-bottom: 14px;
 }
 
+
 @media screen and (min-width : 500px) {
 
 }
@@ -77,18 +130,40 @@
    .container{
         display: flex;
         width: 100vw;
+        overflow: hidden;
+        height: 100vh;
+        padding: 0;
    }
+
+   .streams__container{
+        margin-top: 0;
+        padding : 0 16px 2rem;
+    }
+
+   .nav__container{
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        width: 80vw;
+        border-right: 1px solid var(--gray-200);
+        max-width: 260px;
+    }
+
+   .nav__container .nav__header{
+        display: flex;
+        margin-bottom: 2rem;
+    }
 
     .page__container{
         width: 100%;
+        overflow-y: scroll;
     }
 
-    .nav__container, .page__container, .streams__container{
+    .nav__container, .page__main{
         padding: 2rem 16px;
     }
 
     .nav__container{
-        min-height: 100vh;
         border-right: 10px;
         border-right: 1px solid var(--gray-200);
     }
@@ -98,20 +173,25 @@
     .streams__container{
         display: flex;
         flex-direction: column;
-        max-width: 300px;
+        max-width: 240px;
         border-left: 1px solid var(--gray-200);
+        padding: 2rem 16px;
     }
-    .nav__container .nav__header{
-        display: flex;
-        margin-bottom: 2rem;
-    }
+
     .nav__container{
         max-width: 250px;
+    }
+    .page__container{
+        grid-template-columns: 1fr auto;
+        gap: 1rem;
     }
 }
   
 @media screen and (min-width : 1280px){
     .streams__container{
         max-width: 400px;
+    }
+    .nav__container{
+        max-width: 300px;
     }
 }

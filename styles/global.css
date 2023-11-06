@@ -1,6 +1,7 @@
 :root{
   --purple: #8311F9;
   --purple-700: #6215F2;
+  --purple-100: #FAF2FF;
   --breakpoint-xs: 500px;
   --breakpoint-sm: 640px;
   --breakpoint-md: 768px;
@@ -15,6 +16,7 @@
   --gray-300: #C7C4BC;
   --gray-50: #F8F8F8;
   --gray-700: #565656;
+  --gray-500: #929292;
 }
 
 html,
@@ -65,6 +67,7 @@ img {
   cursor: pointer;
   text-transform: capitalize;
   text-wrap: nowrap;
+  font-size: 1rem;
 }
 
 .btn__primary {

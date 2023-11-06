@@ -94,8 +94,7 @@
     }
 
     .card__body .post__title{
-        font-size: 1.5rem;
-        font-weight: 600;
+        font-size: 1.2rem;
     }
 }
 
@@ -112,4 +111,7 @@
 }
 
 @media screen and (min-width : 1280px){
+    .card__body .post__title{
+        font-size: 1.4rem;
+    }
 }
