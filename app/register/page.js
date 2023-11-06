@@ -52,7 +52,7 @@ export default function Register() {
           <Nav />
         </section>
         <section className={styles.body}>
-          <div className={`btn ${styles.btn__back}`}>
+          <div onClick={router.back} className={`btn ${styles.btn__back}`}>
             <img src="https://res.cloudinary.com/friilancer/image/upload/v1699294372/breach/elwcgwodzr7h2pt9s8xh.svg" alt="logo" />
             Back
           </div>

@@ -17,17 +17,6 @@ export default function RootLayout({ children }) {
 
   const [allInterests, setAllInterests] = useState([])
 
-  const saveSessionUser = (user, callback) => {
-    if(!user || !user?.userId || !user?.token) return
-    localStorage.setItem(AppConstants.STORAGE_KEYS.AUTH_TOKEN, user.token)
-    localStorage.setItem(AppConstants.STORAGE_KEYS.USER_ID, JSON.stringify(user.userId))
-    setSessionUser({
-      id: user.userId,
-      interests: []
-    })
-    callback && callback()
-  }
-
   const connectSocket = () => {
     try {
       let token = localStorage.getItem(AppConstants.STORAGE_KEYS.AUTH_TOKEN)
@@ -57,6 +46,42 @@ export default function RootLayout({ children }) {
       ...prev,
       ...params
     }))
+  }
+
+  const getUserInterest = async({
+    id,
+    token
+  }) => {
+    try {
+      const {data} = await axios.get(`${process.env.NEXT_PUBLIC_BASE_API_URI}${AppConstants.API_ROUTES.INTERESTS(id)}`,{
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      })
+
+      let interests = data.map(item => item?.category?.id) || []
+
+      updateSessionUser({
+        interests
+      })
+
+    } catch (e) {
+    }
+  }
+
+  const saveSessionUser = async(user, callback) => {
+    if(!user || !user?.userId || !user?.token) return
+    localStorage.setItem(AppConstants.STORAGE_KEYS.AUTH_TOKEN, user.token)
+    localStorage.setItem(AppConstants.STORAGE_KEYS.USER_ID, JSON.stringify(user.userId))
+    setSessionUser({
+      id: user.userId,
+      interests: []
+    })
+    await getUserInterest({
+      id: user.userId,
+      token: user.token
+    })
+    callback && callback()
   }
 
   useEffect(() => {

@@ -39,7 +39,7 @@ export default function Onboarding() {
   }
 
   return (
-    <div className={styles.container}>
+    <div className={styles.page}>
       <Head>
         <title>Login</title>
         <link rel="icon" href="icons/logo.svg" />
@@ -48,11 +48,11 @@ export default function Onboarding() {
         <section>
           <Nav />
         </section>
-        <div onClick={router.back} className={`btn ${styles.btn__back}`}>
-          <img src="https://res.cloudinary.com/friilancer/image/upload/v1699294372/breach/elwcgwodzr7h2pt9s8xh.svg" alt="logo" />
-          Back
-        </div>
-        <div>
+        <div className={styles.page__container}>
+          <div onClick={router.back} className={`btn ${styles.btn__back}`}>
+            <img src="https://res.cloudinary.com/friilancer/image/upload/v1699294372/breach/elwcgwodzr7h2pt9s8xh.svg" alt="logo" />
+            Back
+          </div>
           <div className={styles.container}>
             <img className={styles.header__image} src="https://res.cloudinary.com/friilancer/image/upload/v1699294247/breach/a1vgpfibxp8hxhsbanja.png" alt='Hero image' />
             <h1 className={styles.header__main}>What are your interests?</h1>
@@ -66,7 +66,7 @@ export default function Onboarding() {
                 <Link href={'/home'} className={''}>Skip for later</Link>
               </div>
             </div>
-            
+          
           </div>
         </div>
       </main>

@@ -10,20 +10,8 @@ function NavigationEvents() {
   const router = useRouter()
   const { sessionUser } = useContext(App)
  
-  console.log('The session user is', sessionUser)
-
   useEffect(() => {
-    const url = `${pathname}?${searchParams}`
-    console.log(url)
-    // You can now use the current URL
-    // ...
-
-    if(!AppConstants.PUBLIC_PAGES.includes(pathname) && !sessionUser.id){
-      console.log('redirecting to login', pathname)
-      router.push('/login')
-    }else{
-
-    }
+    if(!AppConstants.PUBLIC_PAGES.includes(pathname) && !sessionUser.id) router.push('/login')
 
   }, [pathname, searchParams])
  

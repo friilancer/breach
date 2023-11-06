@@ -3,11 +3,13 @@ import Head from 'next/head';
 import Nav from '../../components/nav/baseNav'
 import styles from './Welcome.module.css';
 import { useRouter } from 'next/navigation';
+import { AppConstants } from '../../lib/constants';
 
 
 export default function Welcome() {
   const router = useRouter()
   const routeToOnboarding = () => {
+    localStorage.setItem(AppConstants.STORAGE_KEYS.ONBOARDED, true)
     router.replace('/onboarding')
   }
   return (

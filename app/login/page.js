@@ -27,8 +27,9 @@ export default function Login() {
           email,
           password
         })
+        let status = localStorage.getItem(AppConstants.STORAGE_KEYS.ONBOARDED) 
         saveSessionUser(data, () => {
-          router.push('/welcome')
+          status ? router.push('/onboarding') : router.push('/welcome')
         })
         
       } catch (e) {
@@ -43,6 +44,8 @@ export default function Login() {
   const onChangePassword = (e) => {
     setPassword(e.target.value)
   }
+
+  
   return (
     <div className={styles.container}>
       <Head>
@@ -54,7 +57,7 @@ export default function Login() {
           <Nav />
         </section>
         <section className={styles.body}>
-          <div className={`btn ${styles.btn__back}`}>
+          <div onClick={router.back}  className={`btn ${styles.btn__back}`}>
             <img src="https://res.cloudinary.com/friilancer/image/upload/v1699294372/breach/elwcgwodzr7h2pt9s8xh.svg" alt="logo" />
             Back
           </div>
