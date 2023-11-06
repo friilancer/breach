@@ -25,7 +25,7 @@ export default function Categories({
             {
                 allInterests.map(({id, name, icon}) => {
                     return (
-                        <button key={id} onClick={() => handleClick(id)} className={`btn ${selectedInterests.includes(id) ? 'btn__primary' : 'btn__neutral'}`}>{icon} {name}</button>
+                        <button key={id} onClick={() => handleClick(id)} className={`btn ${selectedInterests.includes(id) ? 'btn__primary' : 'btn__neutral'}`}>{icon}&nbsp;&nbsp;&nbsp;{name}</button>
                     )
                 })
             }
