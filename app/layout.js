@@ -14,21 +14,22 @@ export default function RootLayout({ children }) {
     interests: []
   })
   const [socket, setSocket] = useState(null)
+  const [streams, setStreams] = useState([])
 
   const [allInterests, setAllInterests] = useState([])
+
 
   const connectSocket = () => {
     try {
       let token = localStorage.getItem(AppConstants.STORAGE_KEYS.AUTH_TOKEN)
-      console.log(token, process.env.NEXT_PUBLIC_SOCKET_URI)
       const Socket = io(`${process.env.NEXT_PUBLIC_SOCKET_URI}`, {
         path: `/ws?token=${token}`,
-        retries: 3,
-        ackTimeout: 10000
+        reconnectionAttempts: 10,
+        reconnectionDelay: 2000,
+        timeout: 4000,
       })
       setSocket(Socket)
     } catch (e) {
-      console.log('error connecting socket', e)
     }
   }
 
@@ -46,6 +47,11 @@ export default function RootLayout({ children }) {
       ...prev,
       ...params
     }))
+  }
+
+  const updateStreams = (params) => {
+    let _streams = [params, ...streams.slice(0, 4)]
+    setStreams(_streams)
   }
 
   const getUserInterest = async({
@@ -85,21 +91,15 @@ export default function RootLayout({ children }) {
   }
 
   useEffect(() => {
-    //connectSocket()
+    connectSocket()
     getAllInterests()
   }, [])
 
   useEffect(() => {
     if(socket) {
-      socket.on('connect', () => {
-        console.log('connected')
-      })
-      socket.onAny((eventName, ...args) => {
-        // ...
-        console.log('On anyyyyyy', eventName, args)
-      });
+      socket.on('connect', () => {})
+      socket.onAny((eventName, ...args) => {});
     } else{
-      console.log('no socket')
     }
 
   }, [socket])
@@ -113,11 +113,11 @@ export default function RootLayout({ children }) {
       saveSessionUser,
       allInterests,
       updateSessionUser,
+      streams,
     }}>
       <html lang='en'>
         <body>
           {children}
-
           <Suspense fallback={null}>
             <NavigationEvent />
           </Suspense>

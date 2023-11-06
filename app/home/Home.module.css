@@ -83,38 +83,14 @@
 .streams__body{
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 1rem;
 }
 
-.stream{
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.stream .stream__title{
-    font-weight: 600;
-}
-
-.stream .stream__content{
-    color: var(--gray-600);
-    word-wrap: break-word;
-    overflow: hidden;
-    max-height: 4.5em;
-    line-height: 1.2em;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    line-clamp: 3;
-    -webkit-box-orient: vertical;
-}
-
-.stream__content_secondary{
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    color: var(--gray-900);
-    font-size: 0.7rem;
-    margin-bottom: 14px;
+.streams__error{
+   margin: 2rem 0;
+   color: var(--gray-600);
+   font-size: 0.8rem;
+   text-align: center;
 }
 
 

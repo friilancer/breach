@@ -3,15 +3,17 @@ import Head from 'next/head';
 import styles from './Home.module.css';
 import PostsNav from '../../components/nav/postsNav';
 import PostCard from '../../components/card/postCard';
-import Categories from '../../components/categories';
-import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { AppConstants } from '../../lib/constants';
 import HomeNav from '../../components/nav/homeNav';
+import { App } from '../../contexts';
+import { useContext } from 'react';
+import Stream from '../../components/card/streamCard';
 
 export default function Home() {
     const [selectedInterests, setSelectedInterests] = useState([])
+    const { streams } = useContext(App)
     const handleChange = (interests) => {
         setSelectedInterests(interests)
     }
@@ -96,15 +98,20 @@ export default function Home() {
                     </p>
                 </div>
                 <div className={styles.streams__body}>
-                    <div className={styles.stream}>
-                        <h4 className={styles.stream__title}>On migration and maintaining friendships</h4>
-                        <p className={styles.stream__content}>I went to boarding school and left pretty early, so I had some experience with losing friends to relocation long before the</p>
-                        <div className={styles.stream__content_secondary} >
-                        <p className={styles.stream__author}>LOTA</p>
-                        <p>•</p>
-                        <p className={styles.stream__date}>12 DEC 2022</p>
-                        </div>
-                    </div>
+                    {
+                        streams.length > 0 ? streams.map((stream) => {
+                            return (
+                                <Stream 
+                                    key={stream.id}
+                                    title={stream.title}
+                                    content={stream.content}
+                                    author={stream.author}
+                                    createdAt={stream.createdAt}
+                                    series={stream.series}
+                                />
+                            )
+                        }) : <p className={styles.streams__error}>OOps! Couldn't retrieve streams🥲</p>
+                    }
                 </div>
             </aside>
         </main>

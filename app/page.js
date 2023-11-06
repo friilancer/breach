@@ -11,7 +11,6 @@ import axios from 'axios';
 import { AppConstants } from '../lib/constants';
 
 export default function Home() {
-
   const [selectedInterests, setSelectedInterests] = useState([])
   const handleChange = (interests) => {
     setSelectedInterests(interests)
