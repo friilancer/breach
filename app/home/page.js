@@ -40,9 +40,9 @@ export default function Home() {
       </Head>
       <div className={styles.container}>
         <aside className={styles.nav__container}>
-            <img src="icons/logo.svg" alt="logo" className={styles.nav__header} />
+            <img src="/icons/logo.svg" alt="logo" className={styles.nav__header} />
             <button className={`btn btn__primary btn__wide`}>
-                <img src="icons/pencil.svg" alt='icon' />
+                <img src="/icons/pencil.svg" alt='icon' />
                 <span>Start Writing</span>
             </button>
             <HomeNav />
@@ -54,7 +54,7 @@ export default function Home() {
                         <h3 className={styles.main__header}>Top Picks</h3>
                         <p className={styles.main__body}>Experience the best of Breach</p>
                     </div>
-                    <img className={styles.hero__image} src="/images/top_pick.png" alt="Logo" />
+                    <img className={styles.hero__image} src="//images/top_pick.png" alt="Logo" />
                     <div className={styles.hero__secondary}>
                         <h3 className={styles.main__header}>
                         How to succeed at long-term investments

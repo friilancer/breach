@@ -22,8 +22,8 @@ export default function Welcome() {
         <div>
           <div className={styles.welcome__container}>
             <div className={styles.welcome__main}>
-              <img src="images/message_bubble.svg" alt="welcome message" className={styles.main__secondary} />
-              <img src="images/welcome.png" alt="welcome" className={styles.main__primary} />
+              <img src="/images/message_bubble.svg" alt="welcome message" className={styles.main__secondary} />
+              <img src="/images/welcome.png" alt="welcome" className={styles.main__primary} />
             </div>
             <h1>Welcome to Breach 🥳</h1>
             <p>

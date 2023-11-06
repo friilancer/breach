@@ -53,7 +53,7 @@ export default function Home() {
                 <Link href={'/register'} className={`btn btn__primary`}>Join Breach</Link>
               </div>
               <div className={styles.hero__image}>
-                <img src="images/hero_image.png" alt="hero" />
+                <img src="/images/hero_image.png" alt="hero" />
               </div>
             </div>
           </section>

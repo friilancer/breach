@@ -53,7 +53,7 @@ export default function Register() {
         </section>
         <section className={styles.body}>
           <div className={`btn ${styles.btn__back}`}>
-            <img src="icons/back.svg" alt="logo" />
+            <img src="/icons/back.svg" alt="logo" />
             Back
           </div>
           <form onSubmit={handleSubmit}>

@@ -6,7 +6,7 @@ const Nav = ({
 }) => {
     return (
         <nav className={styles.nav__container}>
-            <img src="icons/logo.svg" alt="logo" />
+            <img src="/icons/logo.svg" alt="logo" />
             {
                 showActions ? (
                     <div className={styles.nav__secondary}>

@@ -49,7 +49,7 @@ export default function Onboarding() {
           <Nav />
         </section>
         <div onClick={router.back} className={`btn ${styles.btn__back}`}>
-          <img src="icons/back.svg" alt="logo" />
+          <img src="/icons/back.svg" alt="logo" />
           Back
         </div>
         <div>
