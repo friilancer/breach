@@ -92,6 +92,17 @@ export default function Home() {
           </section>
         </div>
       </main>
+      <footer className={styles.footer}>
+        <div className={styles.footer__container}>
+        <img className={styles.footer__main} src="https://res.cloudinary.com/friilancer/image/upload/v1699294373/breach/wsvk8hqpjqmz3xfiej02.svg" alt="logo" />
+          <div className={styles.footer__secondary}>
+            <p className={styles.secondary__activeText}>support@breach.example</p>
+            <p>About Breach</p>
+            <p>Terms</p>
+            <p>Privacy Policy</p>
+          </div>    
+        </div>
+      </footer>
     </div>
   );
 }

@@ -35,7 +35,6 @@ export default function Login() {
         saveSessionUser(data, () => {
           status ? router.push('/onboarding') : router.push('/welcome')
         })
-        
       } catch (e) {
         alert('Account creation failed')
       } finally{

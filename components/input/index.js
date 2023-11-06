@@ -9,8 +9,8 @@ const Input = ({
     value = '',
     onChange = () => {},
     autoComplete = '',
-    errorState = true,
-    errorMessage = 'Big error'
+    errorState = false,
+    errorMessage = ''
 }) => {
     return (
         (
