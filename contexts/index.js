@@ -1,5 +1,3 @@
-import _User from './user';
-import _Category from './categories';
+import _User from './app';
 
-export const User = _User;
-export const Category = _Category;
+export const App = _User;

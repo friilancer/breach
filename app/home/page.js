@@ -19,6 +19,8 @@ export default function Home() {
     const [allPosts, setAllPosts] = useState([])
 
     useEffect(() => {
+        let token = localStorage.getItem(AppConstants.STORAGE_KEYS.AUTH_TOKEN)
+        console.log(token)
         const getAllPosts = async() => {
         try {
             const {data} = await axios.get(`${process.env.NEXT_PUBLIC_BASE_API_URI}${AppConstants.API_ROUTES.POSTS}`)

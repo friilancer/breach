@@ -1,4 +1,4 @@
-import { User } from "../../contexts"
+import { App } from "../../contexts"
 import { useContext, useEffect, useState } from "react"
 import styles from './Index.module.css'
 
@@ -6,7 +6,7 @@ export default function Categories({
     value = [],
     onChange = () => {}
 }){
-    const { allInterests } = useContext(User)
+    const { allInterests } = useContext(App)
     const [selectedInterests, setSelectedInterests] = useState(value)
 
     useEffect(() => {

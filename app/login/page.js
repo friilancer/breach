@@ -9,14 +9,14 @@ import axios from 'axios'
 import { useContext } from 'react';
 import { AppConstants } from '../../lib/constants';
 import {useRouter} from 'next/navigation';
-import { User } from '../../contexts';
+import { App } from '../../contexts';
 
 export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
-  const { saveSessionUser } = useContext(User)
+  const { saveSessionUser } = useContext(App)
 
   const handleSubmit = async(e) => {
       e.preventDefault();

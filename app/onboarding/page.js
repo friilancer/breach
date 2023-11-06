@@ -6,14 +6,14 @@ import { useRouter } from 'next/navigation';
 import Categories from '../../components/categories';
 import Link from 'next/link';
 import { useState, useContext } from 'react';
-import { User } from '../../contexts';
+import { App } from '../../contexts';
 import axios from 'axios';
 import { AppConstants } from '../../lib/constants';
 
 
 export default function Onboarding() {
   const router = useRouter()
-  const { sessionUser, updateSessionUser } = useContext(User)
+  const { sessionUser, updateSessionUser } = useContext(App)
 
   const [selectedInterests, setSelectedInterests] = useState(sessionUser.interests)
   const handleChange = (interests) => {
