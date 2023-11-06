@@ -14,6 +14,7 @@
   --gray-100: #FCFAFF;
   --gray-300: #C7C4BC;
   --gray-50: #F8F8F8;
+  --gray-700: #565656;
 }
 
 html,
@@ -69,6 +70,7 @@ img {
 .btn__primary {
   background: var(--purple);
   color: #fff;
+  border: 1px solid var(--purple);
 }
 
 .btn__secondary{

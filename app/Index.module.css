@@ -82,17 +82,6 @@ xl (1280px);
     color: var(--gray-600);
 }
 
-.categories__body{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 1rem;
-    justify-content: center;
-    width: 100%;
-    max-width: var(--breakpoint-md);
-    margin: auto;
-}
-
 .posts__nav{
     border-bottom: 1.5px solid var(--gray-50);
     display: flex;

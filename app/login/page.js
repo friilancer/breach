@@ -23,12 +23,14 @@ export default function Login() {
       if(isLoading) return
       try {
         setIsLoading(true)
-        const { data, status } = await axios.post(`${process.env.NEXT_PUBLIC_BASE_API_URI}${AppConstants.API_ROUTES.LOGIN}`, {
+        const { data } = await axios.post(`${process.env.NEXT_PUBLIC_BASE_API_URI}${AppConstants.API_ROUTES.LOGIN}`, {
           email,
           password
         })
-        saveSessionUser(data)
-        router.push('/welcome')
+        saveSessionUser(data, () => {
+          router.push('/welcome')
+        })
+        
       } catch (e) {
         alert('Account creation failed')
       } finally{

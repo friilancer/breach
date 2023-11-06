@@ -26,8 +26,9 @@ export default function Register() {
           email,
           password
         })
-        saveSessionUser(data)
-        router.push('/welcome')
+        saveSessionUser(data, () => {
+          router.push('/welcome')
+        })
       } catch (e) {
         alert('Account creation failed')
       } finally{

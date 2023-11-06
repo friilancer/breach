@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 export default function Welcome() {
   const router = useRouter()
   const routeToOnboarding = () => {
-    router.push('/onboarding')
+    router.replace('/onboarding')
   }
   return (
     <div className={styles.container}>
